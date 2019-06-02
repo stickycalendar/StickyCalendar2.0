@@ -37,10 +37,10 @@ public class Day_Note extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jButton_getDate = new javax.swing.JButton();
         jLabel_Wallpaper = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu_opciones = new javax.swing.JMenu();
@@ -94,7 +94,6 @@ public class Day_Note extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 130, 20));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Notas:");
@@ -106,6 +105,16 @@ public class Day_Note extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 80, 400, 240));
+
+        jButton_getDate.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jButton_getDate.setText("Nueva Fecha");
+        jButton_getDate.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton_getDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_getDateActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton_getDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 100, 30));
         getContentPane().add(jLabel_Wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 429, 380));
 
         jMenuBar1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -527,7 +536,7 @@ public class Day_Note extends javax.swing.JFrame {
             jLabel_Wallpaper.setBounds(0, 0, 399, 280);
             jScrollPane1.setBounds(10, 60, 360, 165);
             jTextArea1.setBounds(10, 60, 360, 165);
-            jDateChooser1.setBounds(250, 30, 130, 20);
+            jButton_getDate.setBounds(250, 30, 100, 30);
             jLabel1.setBounds(20, 25, 60, 20);
 
         }
@@ -549,7 +558,7 @@ public class Day_Note extends javax.swing.JFrame {
             jLabel_Wallpaper.setBounds(0, 0, 499, 430);
             jScrollPane1.setBounds(8, 80, 455, 300);
             jTextArea1.setBounds(8, 80, 455, 300);
-            jDateChooser1.setBounds(320, 40, 130, 20);
+            jButton_getDate.setBounds(320, 40, 100, 30);
 
         }
     }//GEN-LAST:event_jMenuItem_tamanio3ActionPerformed
@@ -653,6 +662,13 @@ public class Day_Note extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_TML20ActionPerformed
 
+    private void jButton_getDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_getDateActionPerformed
+        if(evt.getSource() == jButton_getDate){
+            Calendar c = new Calendar();
+            c.setVisible(true);
+        }
+    }//GEN-LAST:event_jButton_getDateActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -702,7 +718,7 @@ public class Day_Note extends javax.swing.JFrame {
     private javax.swing.JMenuItem TML18;
     private javax.swing.JMenuItem TML20;
     private javax.swing.JMenuItem Verde;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JButton jButton_getDate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel_Wallpaper;
     private javax.swing.JMenuBar jMenuBar1;
