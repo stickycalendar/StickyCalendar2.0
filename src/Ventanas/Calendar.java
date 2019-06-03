@@ -11,9 +11,9 @@ import java.util.*;
 import javax.swing.JOptionPane;
 
 public class Calendar extends javax.swing.JFrame {
-    
+
     DateFormat df = DateFormat.getDateInstance();
-    
+
     public Calendar() {
         initComponents();
         Color c = Day_Note.c;
@@ -23,22 +23,21 @@ public class Calendar extends javax.swing.JFrame {
         setTitle("StickyCalendar 2.0");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        
-        
+
     }
-    
+
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("images/icon.png"));
 
         return retValue;
     }
-    
-     public void Limpiar() {
+
+    public void Limpiar() {
         txt_fecha.setText("");
-        
-     }
-    
+
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -90,46 +89,45 @@ public class Calendar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Button_validarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_validarActionPerformed
-            
+
         String fechaO = df.format(Date1.getDate());
         txt_fecha.setText(fechaO);
     }//GEN-LAST:event_Button_validarActionPerformed
 
     private void jButton_CNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CNActionPerformed
-        int validar = 0;    
+        int validar = 0;
         String fecha1;
-            
-            fecha1 = txt_fecha.getText().trim();
-            
-            if (fecha1.equals("")) {
+
+        fecha1 = txt_fecha.getText().trim();
+
+        if (fecha1.equals("")) {
             txt_fecha.setBackground(Color.red);
             validar++;
         }
-            if(validar == 0){
-                try{
-             Connection cn = Conexion.Conectar();
-             
-             PreparedStatement pst = cn.prepareStatement("insert into calendar values (?,?)");
-             
-             pst.setInt(1, 0);
-             pst.setString(2, fecha1);
-             
-             pst.executeUpdate();
-             cn.close();
-             Limpiar();
-             this.dispose();
-             
-             Day_Note dn = new Day_Note();
-             dn.setVisible(true);
-         }catch(SQLException e){
-             JOptionPane.showMessageDialog(null, "Error al añadir fecha");
-         }
-            }else{
-                JOptionPane.showMessageDialog(null, "Fecha no añadida");
+        if (validar == 0) {
+            try {
+                Connection cn = Conexion.Conectar();
+
+                PreparedStatement pst = cn.prepareStatement("insert into calendar values (?,?)");
+
+                pst.setInt(1, 0);
+                pst.setString(2, fecha1);
+
+                pst.executeUpdate();
+                cn.close();
+                Limpiar();
+                this.dispose();
+
+                Day_Note dn = new Day_Note();
+                dn.setVisible(true);
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error al añadir fecha");
             }
-            
-            
-            
+        } else {
+            JOptionPane.showMessageDialog(null, "Fecha no añadida");
+        }
+
+
     }//GEN-LAST:event_jButton_CNActionPerformed
 
     /**
