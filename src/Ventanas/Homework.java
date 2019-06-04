@@ -13,12 +13,13 @@ import java.util.TimerTask;
 public class Homework extends javax.swing.JFrame {
 
     Timer t = new Timer();
-
+    public static Color co = null;
+     
     public Homework() {
         initComponents();
-        Color c = Day_Note.c;
+        co = Day_Note.c;
 
-        getContentPane().setBackground(Color.getColor(null, c));
+        getContentPane().setBackground(Color.getColor(null, co));
         setSize(400, 370);
         setTitle("StickyCalendar 2.0");
         setLocationRelativeTo(null);
@@ -833,6 +834,7 @@ public class Homework extends javax.swing.JFrame {
         
         Day_Note dn = new Day_Note();
         dn.setVisible(true);
+        dn.setBackground(Color.getColor(null, co));
         this.dispose();
     }//GEN-LAST:event_btn_volverActionPerformed
 

@@ -17,6 +17,9 @@ public class Day_Note extends javax.swing.JFrame {
 
     public Day_Note() {
         initComponents();
+        Color c = Day_Note.c;
+
+        getContentPane().setBackground(Color.getColor(null, c));
         setSize(430, 400);
         setTitle("StickyCalendar 2.0");
         setLocationRelativeTo(null);

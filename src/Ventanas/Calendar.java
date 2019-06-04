@@ -14,12 +14,13 @@ public class Calendar extends javax.swing.JFrame {
 
     DateFormat df = DateFormat.getDateInstance();
     public static String fecha1;
+    public static Color co = null;
 
     public Calendar() {
         initComponents();
-        Color c = Day_Note.c;
+        co = Day_Note.c;
 
-        getContentPane().setBackground(Color.getColor(null, c));
+        getContentPane().setBackground(Color.getColor(null, co));
         setSize(400, 250);
         setTitle("StickyCalendar 2.0");
         setLocationRelativeTo(null);
@@ -131,6 +132,7 @@ public class Calendar extends javax.swing.JFrame {
 
                 Day_Note dn = new Day_Note();
                 dn.setVisible(true);
+                dn.setBackground(Color.getColor(null, co));
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, "Error al añadir fecha");
             }
@@ -144,6 +146,7 @@ public class Calendar extends javax.swing.JFrame {
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
             Day_Note dn = new Day_Note();
             dn.setVisible(true);
+            dn.setBackground(Color.getColor(null, co));
             this.dispose();
     }//GEN-LAST:event_btn_volverActionPerformed
 
