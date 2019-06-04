@@ -13,21 +13,25 @@ public class Day_Note extends javax.swing.JFrame {
     String[] Array = {"Arial", "Calibri", "Times New Roman", "Segoe Script"};
     String fon;
     public static Color c = null;
-    String fecha1 = Calendar.fecha1;
+    //String fecha1 = "";
+    String date_update = "";
 
     public Day_Note() {
         initComponents();
         Color c = Day_Note.c;
+        date_update = Dates_Add.date_update;
+        //fecha1 = Calendar.fecha1;
 
         getContentPane().setBackground(Color.getColor(null, c));
         setSize(430, 400);
-        setTitle("StickyCalendar 2.0");
+        setTitle("StickyCalendar 2.0  " + date_update);
         setLocationRelativeTo(null);
         setBackground(c);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         jTextArea1.setFont(f = new Font(fon = Array[2], s, t));
-        jMenu_fecha1.setText(fecha1);
-        
+        //jMenu_fecha1.setText(fecha1);
+        jMenu_fecha1.setText(date_update);
+
     }
 
     //Cambiar Icono:
@@ -45,12 +49,11 @@ public class Day_Note extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jButton_getDate = new javax.swing.JButton();
+        btn_volver = new javax.swing.JButton();
         jLabel_Wallpaper = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu_opciones = new javax.swing.JMenu();
         jMenuItem_Guardar = new javax.swing.JMenuItem();
-        jMenuItem_cerrar = new javax.swing.JMenuItem();
         jMenu_ventana = new javax.swing.JMenu();
         jMenu_colorFondo = new javax.swing.JMenu();
         Amarillo = new javax.swing.JMenuItem();
@@ -110,17 +113,16 @@ public class Day_Note extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 80, 400, 240));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 70, 390, 260));
 
-        jButton_getDate.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButton_getDate.setText("Nueva Fecha");
-        jButton_getDate.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton_getDate.addActionListener(new java.awt.event.ActionListener() {
+        btn_volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Volver.png"))); // NOI18N
+        btn_volver.setBorder(null);
+        btn_volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_getDateActionPerformed(evt);
+                btn_volverActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_getDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 100, 30));
+        getContentPane().add(btn_volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, -1));
         getContentPane().add(jLabel_Wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 429, 380));
 
         jMenuBar1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -131,14 +133,6 @@ public class Day_Note extends javax.swing.JFrame {
         jMenuItem_Guardar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jMenuItem_Guardar.setText("Guardar");
         jMenu_opciones.add(jMenuItem_Guardar);
-
-        jMenuItem_cerrar.setText("Cerrar");
-        jMenuItem_cerrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem_cerrarActionPerformed(evt);
-            }
-        });
-        jMenu_opciones.add(jMenuItem_cerrar);
 
         jMenuBar1.add(jMenu_opciones);
 
@@ -439,6 +433,11 @@ public class Day_Note extends javax.swing.JFrame {
 
         jMenu_fecha1.setForeground(new java.awt.Color(255, 0, 51));
         jMenu_fecha1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jMenu_fecha1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu_fecha1ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu_fecha1);
 
         setJMenuBar(jMenuBar1);
@@ -447,10 +446,8 @@ public class Day_Note extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     // opcion interfaz tareas
     private void jMenuItem_interfazTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_interfazTareaActionPerformed
-
         Homework tarea = new Homework();
         tarea.setVisible(true);
-
     }//GEN-LAST:event_jMenuItem_interfazTareaActionPerformed
 
     private void jMenu_colorFondoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu_colorFondoActionPerformed
@@ -546,7 +543,6 @@ public class Day_Note extends javax.swing.JFrame {
             jLabel_Wallpaper.setBounds(0, 0, 399, 280);
             jScrollPane1.setBounds(10, 60, 360, 165);
             jTextArea1.setBounds(10, 60, 360, 165);
-            jButton_getDate.setBounds(250, 30, 100, 30);
             jLabel1.setBounds(20, 25, 60, 20);
 
         }
@@ -568,7 +564,6 @@ public class Day_Note extends javax.swing.JFrame {
             jLabel_Wallpaper.setBounds(0, 0, 499, 430);
             jScrollPane1.setBounds(8, 80, 455, 300);
             jTextArea1.setBounds(8, 80, 455, 300);
-            jButton_getDate.setBounds(320, 40, 100, 30);
 
         }
     }//GEN-LAST:event_jMenuItem_tamanio3ActionPerformed
@@ -576,14 +571,6 @@ public class Day_Note extends javax.swing.JFrame {
     private void jMenuItem_tamanio1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem_tamanio1MouseClicked
 
     }//GEN-LAST:event_jMenuItem_tamanio1MouseClicked
-
-    //cerrar
-    private void jMenuItem_cerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_cerrarActionPerformed
-
-        if (evt.getSource() == jMenuItem_cerrar) {
-            System.exit(0);
-        }
-    }//GEN-LAST:event_jMenuItem_cerrarActionPerformed
 
     private void jMenu_tipoLetraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu_tipoLetraActionPerformed
 
@@ -672,13 +659,17 @@ public class Day_Note extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_TML20ActionPerformed
 
-    private void jButton_getDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_getDateActionPerformed
-        if(evt.getSource() == jButton_getDate){
-            Calendar c = new Calendar();
-            c.setVisible(true);
+    private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
+
+        if (evt.getSource() == btn_volver) {
+            Principal.getFrames();
             this.dispose();
         }
-    }//GEN-LAST:event_jButton_getDateActionPerformed
+    }//GEN-LAST:event_btn_volverActionPerformed
+
+    private void jMenu_fecha1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu_fecha1ActionPerformed
+
+    }//GEN-LAST:event_jMenu_fecha1ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -729,7 +720,7 @@ public class Day_Note extends javax.swing.JFrame {
     private javax.swing.JMenuItem TML18;
     private javax.swing.JMenuItem TML20;
     private javax.swing.JMenuItem Verde;
-    private javax.swing.JButton jButton_getDate;
+    private javax.swing.JButton btn_volver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel_Wallpaper;
     private javax.swing.JMenuBar jMenuBar1;
@@ -738,7 +729,6 @@ public class Day_Note extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem_3;
     private javax.swing.JMenuItem jMenuItem_4;
     private javax.swing.JMenuItem jMenuItem_Guardar;
-    private javax.swing.JMenuItem jMenuItem_cerrar;
     private javax.swing.JMenuItem jMenuItem_interfazTarea;
     private javax.swing.JMenuItem jMenuItem_tamanio1;
     private javax.swing.JMenuItem jMenuItem_tamanio2;

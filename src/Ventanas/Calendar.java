@@ -8,24 +8,31 @@ import Clases.Conexion;
 import java.sql.*;
 import java.text.DateFormat;
 import java.util.*;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class Calendar extends javax.swing.JFrame {
 
     DateFormat df = DateFormat.getDateInstance();
     public static String fecha1;
-    public static Color co = null;
+    Day_Note dn = new Day_Note();
 
     public Calendar() {
         initComponents();
-        co = Day_Note.c;
 
-        getContentPane().setBackground(Color.getColor(null, co));
         setSize(400, 250);
         setTitle("StickyCalendar 2.0");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        
+
+        ImageIcon wallpaper = new ImageIcon("src/images/wallpaper.png");
+
+        Icon icono = new ImageIcon(wallpaper.getImage().getScaledInstance(jLabel_wallpaper.getWidth(),
+                jLabel_wallpaper.getHeight(), Image.SCALE_DEFAULT));
+
+        jLabel_wallpaper.setIcon(icono);
+        this.repaint();
 
     }
 
@@ -49,7 +56,7 @@ public class Calendar extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txt_fecha = new javax.swing.JTextField();
         jButton_CN = new javax.swing.JButton();
-        Button_validar = new javax.swing.JButton();
+        btn_validar = new javax.swing.JButton();
         btn_volver = new javax.swing.JButton();
         jLabel_wallpaper = new javax.swing.JLabel();
 
@@ -79,33 +86,34 @@ public class Calendar extends javax.swing.JFrame {
         });
         getContentPane().add(jButton_CN, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 90, 25));
 
-        Button_validar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        Button_validar.setText("Validar Fecha");
-        Button_validar.addActionListener(new java.awt.event.ActionListener() {
+        btn_validar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btn_validar.setText("Validar Fecha");
+        btn_validar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_validarActionPerformed(evt);
+                btn_validarActionPerformed(evt);
             }
         });
-        getContentPane().add(Button_validar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, -1, -1));
+        getContentPane().add(btn_validar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, -1, -1));
 
-        btn_volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Volver1.png"))); // NOI18N
-        btn_volver.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Volver.png"))); // NOI18N
+        btn_volver.setBorder(null);
         btn_volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_volverActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 40));
+        getContentPane().add(btn_volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, -1));
         getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 200));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Button_validarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_validarActionPerformed
+    private void btn_validarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_validarActionPerformed
 
-        String fechaO = df.format(Date1.getDate());
-        txt_fecha.setText(fechaO);
-    }//GEN-LAST:event_Button_validarActionPerformed
+        String fecha2 = df.format(Date1.getDate());
+        txt_fecha.setText(fecha2);
+        txt_fecha.setBackground(Color.green);
+    }//GEN-LAST:event_btn_validarActionPerformed
 
     private void jButton_CNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CNActionPerformed
         int validar = 0;
@@ -130,9 +138,7 @@ public class Calendar extends javax.swing.JFrame {
                 Limpiar();
                 this.dispose();
 
-                Day_Note dn = new Day_Note();
                 dn.setVisible(true);
-                dn.setBackground(Color.getColor(null, co));
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, "Error al añadir fecha");
             }
@@ -144,10 +150,10 @@ public class Calendar extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_CNActionPerformed
 
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
-            Day_Note dn = new Day_Note();
-            dn.setVisible(true);
-            dn.setBackground(Color.getColor(null, co));
+        if (evt.getSource() == btn_volver) {
+            Day_Note.getFrames();
             this.dispose();
+        }
     }//GEN-LAST:event_btn_volverActionPerformed
 
     /**
@@ -186,8 +192,8 @@ public class Calendar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Button_validar;
     private com.toedter.calendar.JDateChooser Date1;
+    private javax.swing.JButton btn_validar;
     private javax.swing.JButton btn_volver;
     private javax.swing.JButton jButton_CN;
     private javax.swing.JLabel jLabel1;

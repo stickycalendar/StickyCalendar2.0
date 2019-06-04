@@ -14,7 +14,8 @@ public class Homework extends javax.swing.JFrame {
 
     Timer t = new Timer();
     public static Color co = null;
-     
+    Day_Note dn = new Day_Note();
+
     public Homework() {
         initComponents();
         co = Day_Note.c;
@@ -67,11 +68,11 @@ public class Homework extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton_add1 = new javax.swing.JButton();
-        jButton_add2 = new javax.swing.JButton();
-        jButton_add3 = new javax.swing.JButton();
-        jButton_add4 = new javax.swing.JButton();
-        jButton_add5 = new javax.swing.JButton();
+        btn_add1 = new javax.swing.JButton();
+        btn_add2 = new javax.swing.JButton();
+        btn_add3 = new javax.swing.JButton();
+        btn_add4 = new javax.swing.JButton();
+        btn_add5 = new javax.swing.JButton();
         Delete1 = new javax.swing.JButton();
         Delete2 = new javax.swing.JButton();
         Delete3 = new javax.swing.JButton();
@@ -125,56 +126,56 @@ public class Homework extends javax.swing.JFrame {
         setIconImage(getIconImage());
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton_add1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jButton_add1.setText("ADD TAREA 1");
-        jButton_add1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton_add1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton_add1.addActionListener(new java.awt.event.ActionListener() {
+        btn_add1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        btn_add1.setText("ADD TAREA 1");
+        btn_add1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_add1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_add1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_add1ActionPerformed(evt);
+                btn_add1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_add1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 150, 30));
+        getContentPane().add(btn_add1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 150, 30));
 
-        jButton_add2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jButton_add2.setText("ADD TAREA 2");
-        jButton_add2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton_add2.addActionListener(new java.awt.event.ActionListener() {
+        btn_add2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        btn_add2.setText("ADD TAREA 2");
+        btn_add2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_add2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_add2ActionPerformed(evt);
+                btn_add2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_add2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 150, 30));
+        getContentPane().add(btn_add2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 150, 30));
 
-        jButton_add3.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jButton_add3.setText("ADD TAREA 3");
-        jButton_add3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton_add3.addActionListener(new java.awt.event.ActionListener() {
+        btn_add3.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        btn_add3.setText("ADD TAREA 3");
+        btn_add3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_add3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_add3ActionPerformed(evt);
+                btn_add3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_add3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 150, 30));
+        getContentPane().add(btn_add3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 150, 30));
 
-        jButton_add4.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jButton_add4.setText("ADD TAREA 4");
-        jButton_add4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton_add4.addActionListener(new java.awt.event.ActionListener() {
+        btn_add4.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        btn_add4.setText("ADD TAREA 4");
+        btn_add4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_add4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_add4ActionPerformed(evt);
+                btn_add4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_add4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 150, 30));
+        getContentPane().add(btn_add4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 150, 30));
 
-        jButton_add5.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jButton_add5.setText("ADD TAREA 5");
-        jButton_add5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton_add5.addActionListener(new java.awt.event.ActionListener() {
+        btn_add5.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        btn_add5.setText("ADD TAREA 5");
+        btn_add5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_add5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_add5ActionPerformed(evt);
+                btn_add5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_add5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 150, 30));
+        getContentPane().add(btn_add5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 150, 30));
 
         Delete1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/papelera1.png"))); // NOI18N
         Delete1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -286,14 +287,14 @@ public class Homework extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 200, 25));
 
-        btn_volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Volver1.png"))); // NOI18N
-        btn_volver.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Volver.png"))); // NOI18N
+        btn_volver.setBorder(null);
         btn_volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_volverActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 40));
+        getContentPane().add(btn_volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, -1));
         getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 350));
 
         jMenu_opciones.setText("Opciones");
@@ -426,7 +427,7 @@ public class Homework extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-   //Notificaciones activas e inactivas
+    //Notificaciones activas e inactivas
     private void jMenuItem_AcNotificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_AcNotificacionActionPerformed
 
         if (evt.getSource() == jMenuItem_AcNotificacion) {
@@ -451,90 +452,90 @@ public class Homework extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem_DeNotificacionesActionPerformed
     //Botones de añadir tareas
-    private void jButton_add1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_add1ActionPerformed
-        if (evt.getSource() == jButton_add1) {
+    private void btn_add1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add1ActionPerformed
+        if (evt.getSource() == btn_add1) {
             String Tar1 = null;
             Tar1 = JOptionPane.showInputDialog("Ingrese su tarea");
             jLabel1.setText(Tar1);
             jLabel1.setVisible(true);
-            jButton_add1.setVisible(false);
+            btn_add1.setVisible(false);
             Delete1.setVisible(true);
             SobreEs1.setVisible(true);
             select1.setVisible(true);
             jMenu_notificaciones.setVisible(true);
 
         }
-    }//GEN-LAST:event_jButton_add1ActionPerformed
+    }//GEN-LAST:event_btn_add1ActionPerformed
 
-    private void jButton_add2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_add2ActionPerformed
-        if (evt.getSource() == jButton_add2) {
+    private void btn_add2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add2ActionPerformed
+        if (evt.getSource() == btn_add2) {
             String Tar2 = null;
             Tar2 = JOptionPane.showInputDialog("Ingrese su tarea");
             jLabel2.setText(Tar2);
             jLabel2.setVisible(true);
-            jButton_add2.setVisible(false);
+            btn_add2.setVisible(false);
             Delete2.setVisible(true);
             SobreEs2.setVisible(true);
             select2.setVisible(true);
             jMenu_notificaciones.setVisible(true);
 
         }
-    }//GEN-LAST:event_jButton_add2ActionPerformed
+    }//GEN-LAST:event_btn_add2ActionPerformed
 
-    private void jButton_add3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_add3ActionPerformed
-        if (evt.getSource() == jButton_add3) {
+    private void btn_add3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add3ActionPerformed
+        if (evt.getSource() == btn_add3) {
             String Tar3 = null;
             Tar3 = JOptionPane.showInputDialog("Ingrese su tarea");
             jLabel3.setText(Tar3);
             jLabel3.setVisible(true);
-            jButton_add3.setVisible(false);
+            btn_add3.setVisible(false);
             Delete3.setVisible(true);
             SobreEs3.setVisible(true);
             select3.setVisible(true);
             jMenu_notificaciones.setVisible(true);
 
         }
-    }//GEN-LAST:event_jButton_add3ActionPerformed
+    }//GEN-LAST:event_btn_add3ActionPerformed
 
-    private void jButton_add4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_add4ActionPerformed
-        if (evt.getSource() == jButton_add4) {
+    private void btn_add4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add4ActionPerformed
+        if (evt.getSource() == btn_add4) {
             String Tar4 = null;
             Tar4 = JOptionPane.showInputDialog("Ingrese su tarea");
             jLabel4.setText(Tar4);
             jLabel4.setVisible(true);
-            jButton_add4.setVisible(false);
+            btn_add4.setVisible(false);
             Delete4.setVisible(true);
             SobreEs4.setVisible(true);
             select4.setVisible(true);
             jMenu_notificaciones.setVisible(true);
 
         }
-    }//GEN-LAST:event_jButton_add4ActionPerformed
+    }//GEN-LAST:event_btn_add4ActionPerformed
 
-    private void jButton_add5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_add5ActionPerformed
-        if (evt.getSource() == jButton_add5) {
+    private void btn_add5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add5ActionPerformed
+        if (evt.getSource() == btn_add5) {
             String Tar5 = null;
             Tar5 = JOptionPane.showInputDialog("Ingrese su tarea");
             jLabel5.setText(Tar5);
             jLabel5.setVisible(true);
-            jButton_add5.setVisible(false);
+            btn_add5.setVisible(false);
             Delete5.setVisible(true);
             SobreEs5.setVisible(true);
             select5.setVisible(true);
             jMenu_notificaciones.setVisible(true);
 
         }
-    }//GEN-LAST:event_jButton_add5ActionPerformed
+    }//GEN-LAST:event_btn_add5ActionPerformed
     //borrar tareas
     private void Delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete1ActionPerformed
         if (evt.getSource() == Delete1) {
             jLabel1.setVisible(false);
             jLabel1.setText(null);
-            jButton_add1.setVisible(true);
+            btn_add1.setVisible(true);
             Delete1.setVisible(false);
             SobreEs1.setVisible(false);
             select1.setVisible(false);
-            
+
         }
     }//GEN-LAST:event_Delete1ActionPerformed
 
@@ -542,11 +543,11 @@ public class Homework extends javax.swing.JFrame {
         if (evt.getSource() == Delete2) {
             jLabel2.setVisible(false);
             jLabel2.setText(null);
-            jButton_add2.setVisible(true);
+            btn_add2.setVisible(true);
             Delete2.setVisible(false);
             SobreEs2.setVisible(false);
             select2.setVisible(false);
-            
+
         }
     }//GEN-LAST:event_Delete2ActionPerformed
 
@@ -554,7 +555,7 @@ public class Homework extends javax.swing.JFrame {
         if (evt.getSource() == Delete3) {
             jLabel3.setVisible(false);
             jLabel3.setText(null);
-            jButton_add3.setVisible(true);
+            btn_add3.setVisible(true);
             Delete3.setVisible(false);
             SobreEs3.setVisible(false);
             select3.setVisible(false);
@@ -565,7 +566,7 @@ public class Homework extends javax.swing.JFrame {
         if (evt.getSource() == Delete4) {
             jLabel4.setVisible(false);
             jLabel4.setText(null);
-            jButton_add4.setVisible(true);
+            btn_add4.setVisible(true);
             Delete4.setVisible(false);
             SobreEs4.setVisible(false);
             select4.setVisible(false);
@@ -576,7 +577,7 @@ public class Homework extends javax.swing.JFrame {
         if (evt.getSource() == Delete5) {
             jLabel5.setVisible(false);
             jLabel5.setText(null);
-            jButton_add5.setVisible(true);
+            btn_add5.setVisible(true);
             Delete5.setVisible(false);
             SobreEs5.setVisible(false);
             select5.setVisible(false);
@@ -630,11 +631,11 @@ public class Homework extends javax.swing.JFrame {
     //seleccion de tareas, borrar y editarlas
     private void jMenuItem_ResTareasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_ResTareasActionPerformed
         if (evt.getSource() == jMenuItem_ResTareas) {
-            jButton_add1.setVisible(true);
-            jButton_add2.setVisible(true);
-            jButton_add3.setVisible(true);
-            jButton_add4.setVisible(true);
-            jButton_add5.setVisible(true);
+            btn_add1.setVisible(true);
+            btn_add2.setVisible(true);
+            btn_add3.setVisible(true);
+            btn_add4.setVisible(true);
+            btn_add5.setVisible(true);
 
             Delete1.setVisible(false);
             Delete2.setVisible(false);
@@ -671,7 +672,7 @@ public class Homework extends javax.swing.JFrame {
         if (evt.getSource() == jMenuItem_BorrarT) {
             if (select1.isSelected()) {
                 select1.setVisible(false);
-                jButton_add1.setVisible(true);
+                btn_add1.setVisible(true);
                 Delete1.setVisible(false);
                 SobreEs1.setVisible(false);
                 jLabel1.setText(null);
@@ -679,7 +680,7 @@ public class Homework extends javax.swing.JFrame {
             }
             if (select2.isSelected()) {
                 select2.setVisible(false);
-                jButton_add2.setVisible(true);
+                btn_add2.setVisible(true);
                 Delete2.setVisible(false);
                 SobreEs2.setVisible(false);
                 jLabel2.setText(null);
@@ -687,7 +688,7 @@ public class Homework extends javax.swing.JFrame {
             }
             if (select3.isSelected()) {
                 select3.setVisible(false);
-                jButton_add3.setVisible(true);
+                btn_add3.setVisible(true);
                 Delete3.setVisible(false);
                 SobreEs3.setVisible(false);
                 jLabel3.setText(null);
@@ -695,7 +696,7 @@ public class Homework extends javax.swing.JFrame {
             }
             if (select4.isSelected()) {
                 select4.setVisible(false);
-                jButton_add4.setVisible(true);
+                btn_add4.setVisible(true);
                 Delete4.setVisible(false);
                 SobreEs4.setVisible(false);
                 jLabel4.setText(null);
@@ -703,7 +704,7 @@ public class Homework extends javax.swing.JFrame {
             }
             if (select5.isSelected()) {
                 select5.setVisible(false);
-                jButton_add5.setVisible(true);
+                btn_add5.setVisible(true);
                 Delete5.setVisible(false);
                 SobreEs5.setVisible(false);
                 jLabel5.setText(null);
@@ -831,11 +832,12 @@ public class Homework extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem_60ActionPerformed
 
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
-        
-        Day_Note dn = new Day_Note();
-        dn.setVisible(true);
-        dn.setBackground(Color.getColor(null, co));
-        this.dispose();
+
+        if (evt.getSource() == btn_volver) {
+            Day_Note.getFrames();
+            dn.setBackground(Color.getColor(null, co));
+            this.dispose();
+        }
     }//GEN-LAST:event_btn_volverActionPerformed
 
     public static void main(String args[]) {
@@ -881,12 +883,12 @@ public class Homework extends javax.swing.JFrame {
     private javax.swing.JButton SobreEs3;
     private javax.swing.JButton SobreEs4;
     private javax.swing.JButton SobreEs5;
+    private javax.swing.JButton btn_add1;
+    private javax.swing.JButton btn_add2;
+    private javax.swing.JButton btn_add3;
+    private javax.swing.JButton btn_add4;
+    private javax.swing.JButton btn_add5;
     private javax.swing.JButton btn_volver;
-    private javax.swing.JButton jButton_add1;
-    private javax.swing.JButton jButton_add2;
-    private javax.swing.JButton jButton_add3;
-    private javax.swing.JButton jButton_add4;
-    private javax.swing.JButton jButton_add5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
