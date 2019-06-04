@@ -91,11 +91,11 @@ public class Homework extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        btn_volver = new javax.swing.JButton();
         jLabel_wallpaper = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu_opciones = new javax.swing.JMenu();
         jMenuItem_Guardar = new javax.swing.JMenuItem();
-        jMenuItem_cerrar = new javax.swing.JMenuItem();
         jMenu_tareas = new javax.swing.JMenu();
         jMenuItem_ResTareas = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
@@ -284,6 +284,15 @@ public class Homework extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 200, 25));
+
+        btn_volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Volver1.png"))); // NOI18N
+        btn_volver.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_volverActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 40));
         getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 350));
 
         jMenu_opciones.setText("Opciones");
@@ -292,14 +301,6 @@ public class Homework extends javax.swing.JFrame {
         jMenuItem_Guardar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jMenuItem_Guardar.setText("Guardar");
         jMenu_opciones.add(jMenuItem_Guardar);
-
-        jMenuItem_cerrar.setText("Cerrar");
-        jMenuItem_cerrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem_cerrarActionPerformed(evt);
-            }
-        });
-        jMenu_opciones.add(jMenuItem_cerrar);
 
         jMenuBar1.add(jMenu_opciones);
 
@@ -424,14 +425,7 @@ public class Homework extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    //cerrar
-    private void jMenuItem_cerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_cerrarActionPerformed
-        if (evt.getSource() == jMenuItem_cerrar) {
-            this.setVisible(false);
-
-        }
-    }//GEN-LAST:event_jMenuItem_cerrarActionPerformed
-    //Notificaciones activas e inactivas
+   //Notificaciones activas e inactivas
     private void jMenuItem_AcNotificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_AcNotificacionActionPerformed
 
         if (evt.getSource() == jMenuItem_AcNotificacion) {
@@ -835,6 +829,13 @@ public class Homework extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem_60ActionPerformed
 
+    private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
+        
+        Day_Note dn = new Day_Note();
+        dn.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_volverActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -878,6 +879,7 @@ public class Homework extends javax.swing.JFrame {
     private javax.swing.JButton SobreEs3;
     private javax.swing.JButton SobreEs4;
     private javax.swing.JButton SobreEs5;
+    private javax.swing.JButton btn_volver;
     private javax.swing.JButton jButton_add1;
     private javax.swing.JButton jButton_add2;
     private javax.swing.JButton jButton_add3;
@@ -902,7 +904,6 @@ public class Homework extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem_EditarT;
     private javax.swing.JMenuItem jMenuItem_Guardar;
     private javax.swing.JMenuItem jMenuItem_ResTareas;
-    private javax.swing.JMenuItem jMenuItem_cerrar;
     private javax.swing.JMenu jMenu_TimeNotificacion;
     private javax.swing.JMenu jMenu_noti;
     private javax.swing.JMenu jMenu_notificaciones;

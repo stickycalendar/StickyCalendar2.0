@@ -13,6 +13,7 @@ public class Day_Note extends javax.swing.JFrame {
     String[] Array = {"Arial", "Calibri", "Times New Roman", "Segoe Script"};
     String fon;
     public static Color c = null;
+    String fecha1 = Calendar.fecha1;
 
     public Day_Note() {
         initComponents();
@@ -22,7 +23,8 @@ public class Day_Note extends javax.swing.JFrame {
         setBackground(c);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jTextArea1.setFont(f = new Font(fon = Array[2], s, t));
-
+        jMenu_fecha1.setText(fecha1);
+        
     }
 
     //Cambiar Icono:
@@ -90,6 +92,7 @@ public class Day_Note extends javax.swing.JFrame {
         TML20 = new javax.swing.JMenuItem();
         jMenu_tareas = new javax.swing.JMenu();
         jMenuItem_interfazTarea = new javax.swing.JMenuItem();
+        jMenu_fecha1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
@@ -431,6 +434,10 @@ public class Day_Note extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu_tareas);
 
+        jMenu_fecha1.setForeground(new java.awt.Color(255, 0, 51));
+        jMenu_fecha1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jMenuBar1.add(jMenu_fecha1);
+
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -666,6 +673,7 @@ public class Day_Note extends javax.swing.JFrame {
         if(evt.getSource() == jButton_getDate){
             Calendar c = new Calendar();
             c.setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_jButton_getDateActionPerformed
 
@@ -734,6 +742,7 @@ public class Day_Note extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem_tamanio3;
     private javax.swing.JMenu jMenu_colorFondo;
     private javax.swing.JMenu jMenu_escritura;
+    private javax.swing.JMenu jMenu_fecha1;
     private javax.swing.JMenu jMenu_opciones;
     private javax.swing.JMenu jMenu_tamanioLetra;
     private javax.swing.JMenu jMenu_tamanioVentana;
