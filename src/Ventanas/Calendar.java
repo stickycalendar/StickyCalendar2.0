@@ -20,7 +20,7 @@ public class Calendar extends javax.swing.JFrame {
         Color c = Day_Note.c;
 
         getContentPane().setBackground(Color.getColor(null, c));
-        setSize(400, 200);
+        setSize(400, 250);
         setTitle("StickyCalendar 2.0");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
