@@ -26,6 +26,7 @@ public class Day_Note extends javax.swing.JFrame {
         setSize(430, 400);
         setTitle("StickyCalendar 2.0  " + date_update);
         setLocationRelativeTo(null);
+        setResizable(false);
         setBackground(c);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         jTextArea1.setFont(f = new Font(fon = Array[2], s, t));

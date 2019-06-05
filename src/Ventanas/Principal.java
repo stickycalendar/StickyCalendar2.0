@@ -12,6 +12,8 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         setTitle("StickyCalendar 2.0");
         setLocationRelativeTo(null);
+        setResizable(false);
+        setSize(400, 180);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
         ImageIcon wallpaper = new ImageIcon("src/images/wallpaper.png");
@@ -67,7 +69,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel_welcome.setForeground(new java.awt.Color(51, 153, 255));
         jLabel_welcome.setText("WELCOME TO STICKY CALENDAR 2.0");
         getContentPane().add(jLabel_welcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 30, -1, -1));
-        getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 150));
+        getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 170));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

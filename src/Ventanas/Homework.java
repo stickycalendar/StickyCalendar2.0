@@ -24,6 +24,7 @@ public class Homework extends javax.swing.JFrame {
         setSize(400, 370);
         setTitle("StickyCalendar 2.0");
         setLocationRelativeTo(null);
+        setResizable(false);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         jMenu_noti.setVisible(false);
         jMenuItem_AcNotificacion.setVisible(true);

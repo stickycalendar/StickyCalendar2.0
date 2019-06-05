@@ -24,6 +24,7 @@ public class Calendar extends javax.swing.JFrame {
         setSize(400, 250);
         setTitle("StickyCalendar 2.0");
         setLocationRelativeTo(null);
+        setResizable(false);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
         ImageIcon wallpaper = new ImageIcon("src/images/wallpaper.png");
@@ -103,7 +104,7 @@ public class Calendar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btn_volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, -1));
-        getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 200));
+        getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 220));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
