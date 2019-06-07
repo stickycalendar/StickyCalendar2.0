@@ -16,7 +16,6 @@ public class Calendar extends javax.swing.JFrame {
 
     DateFormat df = DateFormat.getDateInstance();
     public static String date_update2 = "";
-    Day_Note dn = new Day_Note();
 
     public Calendar() {
         initComponents();
@@ -74,6 +73,7 @@ public class Calendar extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
 
         txt_fecha.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txt_fecha.setEnabled(false);
         getContentPane().add(txt_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 120, 25));
 
         jButton_CN.setBackground(new java.awt.Color(255, 255, 255));
@@ -113,7 +113,6 @@ public class Calendar extends javax.swing.JFrame {
 
         String fecha2 = df.format(Date1.getDate());
         txt_fecha.setText(fecha2);
-        txt_fecha.setBackground(Color.green);
     }//GEN-LAST:event_btn_validarActionPerformed
 
     private void jButton_CNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CNActionPerformed
@@ -122,29 +121,48 @@ public class Calendar extends javax.swing.JFrame {
         date_update2 = txt_fecha.getText().trim();
 
         if (date_update2.equals("")) {
-            txt_fecha.setBackground(Color.red);
             validar++;
         }
-        if (validar == 0) {
-            try {
-                Connection cn = Conexion.Conectar();
 
-                PreparedStatement pst = cn.prepareStatement("insert into calendar values (?,?)");
+        try {
+            Connection cn = Conexion.Conectar();
+            PreparedStatement pst = cn.prepareStatement(
+                    "select Fecha from calendar where Fecha = '" + date_update2 + "'");
+            ResultSet rs = pst.executeQuery();
 
-                pst.setInt(1, 0);
-                pst.setString(2, date_update2);
-
-                pst.executeUpdate();
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null, "Fecha no disponible");
                 cn.close();
-                Limpiar();
-                this.dispose();
+            } else {
+                cn.close();
 
-                dn.setVisible(true);
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Error al añadir fecha");
+                if (validar == 0) {
+                    try {
+                        Connection cn2 = Conexion.Conectar();
+
+                        PreparedStatement pst2 = cn2.prepareStatement("insert into calendar values (?,?)");
+
+                        pst2.setInt(1, 0);
+                        pst2.setString(2, date_update2);
+
+                        pst2.executeUpdate();
+
+                        Day_Note dn = new Day_Note();
+                        dn.setVisible(true);
+                        this.dispose();
+
+                        cn2.close();
+                        Limpiar();
+
+                    } catch (SQLException e) {
+                        JOptionPane.showMessageDialog(null, "Error al añadir fecha");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Fecha no añadida");
+                }
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Fecha no añadida");
+        } catch (SQLException e) {
+            System.err.println("Error en validar fecha" + e);
         }
 
 
@@ -152,7 +170,7 @@ public class Calendar extends javax.swing.JFrame {
 
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
         if (evt.getSource() == btn_volver) {
-            Day_Note.getFrames();
+            Principal.getFrames();
             this.dispose();
         }
     }//GEN-LAST:event_btn_volverActionPerformed

@@ -14,7 +14,7 @@ public class Principal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         setSize(400, 180);
-        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         ImageIcon wallpaper = new ImageIcon("src/images/wallpaper.png");
 

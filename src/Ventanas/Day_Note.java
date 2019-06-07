@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 public class Day_Note extends javax.swing.JFrame {
 
-    int t = 14, s = 0;
+    int t = 14, s = 0, ID;
     Font f = null;
     String[] Array = {"Arial", "Calibri", "Times New Roman", "Segoe Script"};
     String fon;
@@ -20,17 +20,34 @@ public class Day_Note extends javax.swing.JFrame {
         initComponents();
         Color c = Day_Note.c;
         date_update = Dates_Add.date_update;
-
+        
         getContentPane().setBackground(Color.getColor(null, c));
         setSize(430, 400);
-        setTitle("StickyCalendar 2.0  " + date_update);
+        setTitle("StickyCalendar 2.0");
         setLocationRelativeTo(null);
         setResizable(false);
         setBackground(c);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         jTextArea1.setFont(f = new Font(fon = Array[2], s, t));
+       
         jMenu_fecha1.setText(date_update);
-
+        
+        try{
+            Connection cn = Conexion.Conectar();
+            PreparedStatement pst = cn.prepareStatement(
+                "select * from calendar where Fecha = '" + date_update + "'");
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next()){
+                ID = rs.getInt("ID");
+                
+                //.............
+            }
+        }catch(SQLException E){
+            JOptionPane.showMessageDialog(null, "Error al mostrar Day_Note");
+        }
+        
+        
     }
 
     //Cambiar Icono:
@@ -100,7 +117,7 @@ public class Day_Note extends javax.swing.JFrame {
         jMI_interfazTarea = new javax.swing.JMenuItem();
         jMenu_fecha1 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -132,6 +149,11 @@ public class Day_Note extends javax.swing.JFrame {
 
         jMI_Guardar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jMI_Guardar.setText("Guardar");
+        jMI_Guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMI_GuardarActionPerformed(evt);
+            }
+        });
         jMenu_opciones.add(jMI_Guardar);
 
         jMI_Eliminar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -441,12 +463,7 @@ public class Day_Note extends javax.swing.JFrame {
         jMenuBar1.add(jMenu_tareas);
 
         jMenu_fecha1.setForeground(new java.awt.Color(255, 0, 51));
-        jMenu_fecha1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenu_fecha1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu_fecha1ActionPerformed(evt);
-            }
-        });
+        jMenu_fecha1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jMenuBar1.add(jMenu_fecha1);
 
         setJMenuBar(jMenuBar1);
@@ -676,10 +693,6 @@ public class Day_Note extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_volverActionPerformed
 
-    private void jMenu_fecha1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu_fecha1ActionPerformed
-
-    }//GEN-LAST:event_jMenu_fecha1ActionPerformed
-
     private void jMI_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMI_EliminarActionPerformed
 
         if (evt.getSource() == jMI_Eliminar) {
@@ -693,7 +706,6 @@ public class Day_Note extends javax.swing.JFrame {
                 pst.setString(1, date_update);
                 pst.executeUpdate();
                 cn.close();
-                
                 this.dispose();
                 JOptionPane.showMessageDialog(null, "Fecha borrada");
 
@@ -704,6 +716,12 @@ public class Day_Note extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jMI_EliminarActionPerformed
+
+    private void jMI_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMI_GuardarActionPerformed
+            if(evt.getSource() == jMI_Guardar){
+                
+            }
+    }//GEN-LAST:event_jMI_GuardarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

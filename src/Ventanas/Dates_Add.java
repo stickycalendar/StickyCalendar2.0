@@ -39,20 +39,19 @@ public class Dates_Add extends javax.swing.JFrame {
         try {
             Connection cn = Conexion.Conectar();
             PreparedStatement pst = cn.prepareStatement(
-                    "select ID, Fecha from calendar");
+                    "select Fecha from calendar");
 
             ResultSet rs = pst.executeQuery();
 
             jTable_fecha = new JTable(model);
             jScrollPane1.setViewportView(jTable_fecha);
-
-            model.addColumn("N°");
+            
             model.addColumn("Fecha");
 
             while (rs.next()) {
-                Object[] fila = new Object[2];
+                Object[] fila = new Object[1];
 
-                for (int i = 0; i < 2; i++) {
+                for (int i = 0; i < 1; i++) {
                     fila[i] = rs.getObject(i + 1);
                 }
                 model.addRow(fila);
@@ -68,7 +67,7 @@ public class Dates_Add extends javax.swing.JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 int fila_point = jTable_fecha.rowAtPoint(e.getPoint());
-                int columna_point = 1;
+                int columna_point = 0;
 
                 if (fila_point > -1) {
                     date_update = (String) model.getValueAt(fila_point, columna_point);
@@ -118,21 +117,22 @@ public class Dates_Add extends javax.swing.JFrame {
         jTable_fecha.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTable_fecha.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null}
             },
             new String [] {
-                "Title 1", "Title 2"
+                "Title 1"
             }
         ));
+        jTable_fecha.setEnabled(false);
         jTable_fecha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable_fechaMouseClicked(evt);
@@ -140,7 +140,7 @@ public class Dates_Add extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable_fecha);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 270, 210));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 120, 210));
         getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 300));
 
         pack();
@@ -149,7 +149,7 @@ public class Dates_Add extends javax.swing.JFrame {
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
 
         if (evt.getSource() == btn_volver) {
-            Day_Note.getFrames();
+            Principal.getFrames();
             this.dispose();
         }
     }//GEN-LAST:event_btn_volverActionPerformed
