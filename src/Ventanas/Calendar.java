@@ -15,12 +15,12 @@ import javax.swing.JOptionPane;
 public class Calendar extends javax.swing.JFrame {
 
     DateFormat df = DateFormat.getDateInstance();
-    public static String fecha1;
+    public static String date_update2 = "";
     Day_Note dn = new Day_Note();
 
     public Calendar() {
         initComponents();
-
+        date_update2 = Dates_Add.date_update;
         setSize(400, 250);
         setTitle("StickyCalendar 2.0");
         setLocationRelativeTo(null);
@@ -119,9 +119,9 @@ public class Calendar extends javax.swing.JFrame {
     private void jButton_CNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CNActionPerformed
         int validar = 0;
 
-        fecha1 = txt_fecha.getText().trim();
+        date_update2 = txt_fecha.getText().trim();
 
-        if (fecha1.equals("")) {
+        if (date_update2.equals("")) {
             txt_fecha.setBackground(Color.red);
             validar++;
         }
@@ -132,7 +132,7 @@ public class Calendar extends javax.swing.JFrame {
                 PreparedStatement pst = cn.prepareStatement("insert into calendar values (?,?)");
 
                 pst.setInt(1, 0);
-                pst.setString(2, fecha1);
+                pst.setString(2, date_update2);
 
                 pst.executeUpdate();
                 cn.close();

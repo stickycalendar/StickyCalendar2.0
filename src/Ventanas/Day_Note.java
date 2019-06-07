@@ -5,6 +5,7 @@ import java.awt.event.*;
 import javax.swing.WindowConstants;
 import Clases.Conexion;
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 public class Day_Note extends javax.swing.JFrame {
 
@@ -13,14 +14,12 @@ public class Day_Note extends javax.swing.JFrame {
     String[] Array = {"Arial", "Calibri", "Times New Roman", "Segoe Script"};
     String fon;
     public static Color c = null;
-    //String fecha1 = "";
     String date_update = "";
 
     public Day_Note() {
         initComponents();
         Color c = Day_Note.c;
         date_update = Dates_Add.date_update;
-        //fecha1 = Calendar.fecha1;
 
         getContentPane().setBackground(Color.getColor(null, c));
         setSize(430, 400);
@@ -30,7 +29,6 @@ public class Day_Note extends javax.swing.JFrame {
         setBackground(c);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         jTextArea1.setFont(f = new Font(fon = Array[2], s, t));
-        //jMenu_fecha1.setText(fecha1);
         jMenu_fecha1.setText(date_update);
 
     }
@@ -54,7 +52,8 @@ public class Day_Note extends javax.swing.JFrame {
         jLabel_Wallpaper = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu_opciones = new javax.swing.JMenu();
-        jMenuItem_Guardar = new javax.swing.JMenuItem();
+        jMI_Guardar = new javax.swing.JMenuItem();
+        jMI_Eliminar = new javax.swing.JMenuItem();
         jMenu_ventana = new javax.swing.JMenu();
         jMenu_colorFondo = new javax.swing.JMenu();
         Amarillo = new javax.swing.JMenuItem();
@@ -98,7 +97,7 @@ public class Day_Note extends javax.swing.JFrame {
         TML18 = new javax.swing.JMenuItem();
         TML20 = new javax.swing.JMenuItem();
         jMenu_tareas = new javax.swing.JMenu();
-        jMenuItem_interfazTarea = new javax.swing.JMenuItem();
+        jMI_interfazTarea = new javax.swing.JMenuItem();
         jMenu_fecha1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -131,9 +130,18 @@ public class Day_Note extends javax.swing.JFrame {
         jMenu_opciones.setText("Opciones");
         jMenu_opciones.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
-        jMenuItem_Guardar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jMenuItem_Guardar.setText("Guardar");
-        jMenu_opciones.add(jMenuItem_Guardar);
+        jMI_Guardar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jMI_Guardar.setText("Guardar");
+        jMenu_opciones.add(jMI_Guardar);
+
+        jMI_Eliminar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jMI_Eliminar.setText("Eliminar Tarea");
+        jMI_Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMI_EliminarActionPerformed(evt);
+            }
+        });
+        jMenu_opciones.add(jMI_Eliminar);
 
         jMenuBar1.add(jMenu_opciones);
 
@@ -421,14 +429,14 @@ public class Day_Note extends javax.swing.JFrame {
         jMenu_tareas.setText("Tareas");
         jMenu_tareas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
-        jMenuItem_interfazTarea.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jMenuItem_interfazTarea.setText("Abrir Interfaz de Tareas");
-        jMenuItem_interfazTarea.addActionListener(new java.awt.event.ActionListener() {
+        jMI_interfazTarea.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jMI_interfazTarea.setText("Abrir Interfaz de Tareas");
+        jMI_interfazTarea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem_interfazTareaActionPerformed(evt);
+                jMI_interfazTareaActionPerformed(evt);
             }
         });
-        jMenu_tareas.add(jMenuItem_interfazTarea);
+        jMenu_tareas.add(jMI_interfazTarea);
 
         jMenuBar1.add(jMenu_tareas);
 
@@ -446,10 +454,10 @@ public class Day_Note extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     // opcion interfaz tareas
-    private void jMenuItem_interfazTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_interfazTareaActionPerformed
+    private void jMI_interfazTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMI_interfazTareaActionPerformed
         Homework tarea = new Homework();
         tarea.setVisible(true);
-    }//GEN-LAST:event_jMenuItem_interfazTareaActionPerformed
+    }//GEN-LAST:event_jMI_interfazTareaActionPerformed
 
     private void jMenu_colorFondoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu_colorFondoActionPerformed
 
@@ -544,7 +552,7 @@ public class Day_Note extends javax.swing.JFrame {
             jLabel_Wallpaper.setBounds(0, 0, 399, 280);
             jScrollPane1.setBounds(10, 60, 360, 165);
             jTextArea1.setBounds(10, 60, 360, 165);
-            jLabel1.setBounds(20, 25, 60, 20);
+            jLabel1.setBounds(20, 35, 60, 20);
 
         }
     }//GEN-LAST:event_jMenuItem_tamanio1ActionPerformed
@@ -672,6 +680,31 @@ public class Day_Note extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMenu_fecha1ActionPerformed
 
+    private void jMI_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMI_EliminarActionPerformed
+
+        if (evt.getSource() == jMI_Eliminar) {
+            try {
+                
+                Connection cn = Conexion.Conectar();
+
+                PreparedStatement pst = cn.prepareStatement(
+                        "DELETE FROM calendar WHERE Fecha = ?");
+
+                pst.setString(1, date_update);
+                pst.executeUpdate();
+                cn.close();
+                
+                this.dispose();
+                JOptionPane.showMessageDialog(null, "Fecha borrada");
+
+            } catch (SQLException e) {
+                System.err.println("Error al ejecutar el delete " + e);
+                JOptionPane.showMessageDialog(null, "Error al eliminar fecha");
+            }
+        }
+
+    }//GEN-LAST:event_jMI_EliminarActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -724,13 +757,14 @@ public class Day_Note extends javax.swing.JFrame {
     private javax.swing.JButton btn_volver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel_Wallpaper;
+    private javax.swing.JMenuItem jMI_Eliminar;
+    private javax.swing.JMenuItem jMI_Guardar;
+    private javax.swing.JMenuItem jMI_interfazTarea;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem_1;
     private javax.swing.JMenuItem jMenuItem_2;
     private javax.swing.JMenuItem jMenuItem_3;
     private javax.swing.JMenuItem jMenuItem_4;
-    private javax.swing.JMenuItem jMenuItem_Guardar;
-    private javax.swing.JMenuItem jMenuItem_interfazTarea;
     private javax.swing.JMenuItem jMenuItem_tamanio1;
     private javax.swing.JMenuItem jMenuItem_tamanio2;
     private javax.swing.JMenuItem jMenuItem_tamanio3;

@@ -22,10 +22,19 @@ public class Dates_Add extends javax.swing.JFrame {
     public Dates_Add() {
         initComponents();
         setTitle("StickyCalendar 2.0");
+        setSize(300, 300);
         setLocationRelativeTo(null);
         setResizable(false);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(Color.LIGHT_GRAY);
+        
+        ImageIcon wallpaper = new ImageIcon("src/images/wallpaper.png");
+
+        Icon icono = new ImageIcon(wallpaper.getImage().getScaledInstance(jLabel_wallpaper.getWidth(),
+                jLabel_wallpaper.getHeight(), Image.SCALE_DEFAULT));
+
+        jLabel_wallpaper.setIcon(icono);
+        this.repaint();
 
         try {
             Connection cn = Conexion.Conectar();
@@ -63,21 +72,20 @@ public class Dates_Add extends javax.swing.JFrame {
 
                 if (fila_point > -1) {
                     date_update = (String) model.getValueAt(fila_point, columna_point);
+                    setVisible(false);
                     Day_Note dn = new Day_Note();
                     dn.setVisible(true);
-
                 }
-            }
+            } 
         });
-
     }
-
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("images/icon.png"));
 
         return retValue;
     }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -125,10 +133,15 @@ public class Dates_Add extends javax.swing.JFrame {
                 "Title 1", "Title 2"
             }
         ));
+        jTable_fecha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable_fechaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable_fecha);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 290, 210));
-        getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 300));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 270, 210));
+        getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -140,6 +153,10 @@ public class Dates_Add extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_btn_volverActionPerformed
+
+    private void jTable_fechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_fechaMouseClicked
+        
+    }//GEN-LAST:event_jTable_fechaMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
