@@ -17,10 +17,11 @@ import javax.swing.table.DefaultTableModel;
 public class Dates_Add extends javax.swing.JFrame {
 
     DefaultTableModel model = new DefaultTableModel();
-    public static String date_update = "";
-
+    public static String date_update1 = "";
+    
     public Dates_Add() {
         initComponents();
+        
         setTitle("StickyCalendar 2.0");
         setSize(300, 300);
         setLocationRelativeTo(null);
@@ -70,10 +71,14 @@ public class Dates_Add extends javax.swing.JFrame {
                 int columna_point = 0;
 
                 if (fila_point > -1) {
-                    date_update = (String) model.getValueAt(fila_point, columna_point);
+                    date_update1 = (String) model.getValueAt(fila_point, columna_point);
                     setVisible(false);
+                    
                     Day_Note dn = new Day_Note();
                     dn.setVisible(true);
+                    dn.setTitle("StickyCalendar 2.0 - " + date_update1);
+                    dn.date_update = date_update1;
+                    
                 }
             } 
         });

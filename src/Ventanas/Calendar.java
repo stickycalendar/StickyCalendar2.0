@@ -1,6 +1,5 @@
 package Ventanas;
 
-import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.WindowConstants;
@@ -16,10 +15,10 @@ public class Calendar extends javax.swing.JFrame {
 
     DateFormat df = DateFormat.getDateInstance();
     public static String date_update2 = "";
-
+    
     public Calendar() {
         initComponents();
-        date_update2 = Dates_Add.date_update;
+        
         setSize(400, 250);
         setTitle("StickyCalendar 2.0");
         setLocationRelativeTo(null);
@@ -140,22 +139,27 @@ public class Calendar extends javax.swing.JFrame {
                     try {
                         Connection cn2 = Conexion.Conectar();
 
-                        PreparedStatement pst2 = cn2.prepareStatement("insert into calendar values (?,?)");
+                        PreparedStatement pst2 = cn2.prepareStatement("insert into calendar values (?,?,?)");
 
                         pst2.setInt(1, 0);
                         pst2.setString(2, date_update2);
+                        pst2.setString(3, "");
 
                         pst2.executeUpdate();
 
                         Day_Note dn = new Day_Note();
                         dn.setVisible(true);
+                        dn.setTitle("StickyCalendar 2.0 - " + date_update2);
+                        dn.date_update = date_update2;
+                        dn.setBackground(null);
+                        
                         this.dispose();
 
                         cn2.close();
                         Limpiar();
 
                     } catch (SQLException e) {
-                        JOptionPane.showMessageDialog(null, "Error al añadir fecha");
+                        JOptionPane.showMessageDialog(null, "Error al añadir fecha" + e);
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Fecha no añadida");

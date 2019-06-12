@@ -12,14 +12,12 @@ public class Day_Note extends javax.swing.JFrame {
     int t = 14, s = 0, ID;
     Font f = null;
     String[] Array = {"Arial", "Calibri", "Times New Roman", "Segoe Script"};
-    String fon;
+    String fon, labelC, fecha1, date_update = "";
     public static Color c = null;
-    String date_update = "";
-
+    //String[] date_update = {Dates_Add.date_update1, Calendar.date_update2};
+    
     public Day_Note() {
         initComponents();
-        Color c = Day_Note.c;
-        date_update = Dates_Add.date_update;
         
         getContentPane().setBackground(Color.getColor(null, c));
         setSize(430, 400);
@@ -29,25 +27,18 @@ public class Day_Note extends javax.swing.JFrame {
         setBackground(c);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         jTextArea1.setFont(f = new Font(fon = Array[2], s, t));
-       
-        jMenu_fecha1.setText(date_update);
+   
+        jLabel_color.setVisible(false);
+        jMI_Guardar.setVisible(true);
         
-        try{
-            Connection cn = Conexion.Conectar();
-            PreparedStatement pst = cn.prepareStatement(
-                "select * from calendar where Fecha = '" + date_update + "'");
-            ResultSet rs = pst.executeQuery();
-            
-            if(rs.next()){
-                ID = rs.getInt("ID");
-                
-                //.............
-            }
-        }catch(SQLException E){
-            JOptionPane.showMessageDialog(null, "Error al mostrar Day_Note");
+    }
+
+    public final static String toHexString(Color co) throws NullPointerException {
+        String hexColour = Integer.toHexString(co.getRGB() & 0xffffff);
+        if (hexColour.length() < 6) {
+            hexColour = "000000".substring(0, 6 - hexColour.length()) + hexColour;
         }
-        
-        
+        return "#" + hexColour.toUpperCase();
     }
 
     //Cambiar Icono:
@@ -66,6 +57,7 @@ public class Day_Note extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         btn_volver = new javax.swing.JButton();
+        jLabel_color = new javax.swing.JLabel();
         jLabel_Wallpaper = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu_opciones = new javax.swing.JMenu();
@@ -140,6 +132,7 @@ public class Day_Note extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btn_volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, -1));
+        getContentPane().add(jLabel_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, -1));
         getContentPane().add(jLabel_Wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 429, 380));
 
         jMenuBar1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -484,11 +477,10 @@ public class Day_Note extends javax.swing.JFrame {
     private void AmarilloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AmarilloActionPerformed
 
         if (evt.getSource() == Amarillo) {
-            getContentPane().setBackground(c = Color.yellow);
-            jLabel1.setForeground(Color.black);
+            getContentPane().setBackground(c = Color.YELLOW);
+            jLabel1.setForeground(Color.BLACK);
+            jLabel_color.setText(toHexString(c));
         }
-
-
     }//GEN-LAST:event_AmarilloActionPerformed
 
     private void AmarilloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AmarilloMouseClicked
@@ -497,64 +489,73 @@ public class Day_Note extends javax.swing.JFrame {
 
     private void AzulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AzulActionPerformed
         if (evt.getSource() == Azul) {
-            getContentPane().setBackground(c = Color.blue);
-            jLabel1.setForeground(Color.white);
+            getContentPane().setBackground(c = Color.BLUE);
+            jLabel1.setForeground(Color.WHITE);
+            jLabel_color.setText(toHexString(c));
         }
     }//GEN-LAST:event_AzulActionPerformed
 
     private void RojoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RojoActionPerformed
         if (evt.getSource() == Rojo) {
-            getContentPane().setBackground(c = Color.red);
-            jLabel1.setForeground(Color.black);
+            getContentPane().setBackground(c = Color.RED);
+            jLabel1.setForeground(Color.BLACK);
+            jLabel_color.setText(toHexString(c));
         }
     }//GEN-LAST:event_RojoActionPerformed
 
     private void VerdeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerdeActionPerformed
         if (evt.getSource() == Verde) {
-            getContentPane().setBackground(c = Color.green);
-            jLabel1.setForeground(Color.black);
+            getContentPane().setBackground(c = Color.GREEN);
+            jLabel1.setForeground(Color.BLACK);
+            jLabel_color.setText(toHexString(c));
         }
     }//GEN-LAST:event_VerdeActionPerformed
 
     private void NaranjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NaranjaActionPerformed
         if (evt.getSource() == Naranja) {
-            getContentPane().setBackground(c = Color.orange);
-            jLabel1.setForeground(Color.black);
+            getContentPane().setBackground(c = Color.ORANGE);
+            jLabel1.setForeground(Color.BLACK);
+            jLabel_color.setText(toHexString(c));
         }
     }//GEN-LAST:event_NaranjaActionPerformed
 
     private void NegroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NegroActionPerformed
         if (evt.getSource() == Negro) {
-            getContentPane().setBackground(c = Color.black);
-            jLabel1.setForeground(Color.white);
+            getContentPane().setBackground(c = Color.BLACK);
+            jLabel1.setForeground(Color.WHITE);
+            jLabel_color.setText(toHexString(c));
         }
     }//GEN-LAST:event_NegroActionPerformed
 
     private void BlancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlancoActionPerformed
         if (evt.getSource() == Blanco) {
-            getContentPane().setBackground(c = Color.white);
-            jLabel1.setForeground(Color.black);
+            getContentPane().setBackground(c = Color.WHITE);
+            jLabel1.setForeground(Color.BLACK);
+            jLabel_color.setText(toHexString(c));
         }
     }//GEN-LAST:event_BlancoActionPerformed
 
     private void RosaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RosaActionPerformed
         if (evt.getSource() == Rosa) {
-            getContentPane().setBackground(c = Color.pink);
-            jLabel1.setForeground(Color.black);
+            getContentPane().setBackground(c = Color.PINK);
+            jLabel1.setForeground(Color.BLACK);
+            jLabel_color.setText(toHexString(c));
         }
     }//GEN-LAST:event_RosaActionPerformed
 
     private void MagentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MagentaActionPerformed
         if (evt.getSource() == Magenta) {
             getContentPane().setBackground(c = Color.MAGENTA);
-            jLabel1.setForeground(Color.black);
+            jLabel1.setForeground(Color.BLACK);
+            jLabel_color.setText(toHexString(c));
         }
     }//GEN-LAST:event_MagentaActionPerformed
 
     private void GrisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GrisActionPerformed
         if (evt.getSource() == Gris) {
-            getContentPane().setBackground(c = Color.gray);
-            jLabel1.setForeground(Color.black);
+            getContentPane().setBackground(c = Color.GRAY);
+            jLabel1.setForeground(Color.BLACK);
+            jLabel_color.setText(toHexString(c));
         }
     }//GEN-LAST:event_GrisActionPerformed
 
@@ -697,13 +698,12 @@ public class Day_Note extends javax.swing.JFrame {
 
         if (evt.getSource() == jMI_Eliminar) {
             try {
-                
+
                 Connection cn = Conexion.Conectar();
 
                 PreparedStatement pst = cn.prepareStatement(
-                        "DELETE FROM calendar WHERE Fecha = ?");
+                        "DELETE FROM calendar WHERE Fecha = '" + date_update + "'");
 
-                pst.setString(1, date_update);
                 pst.executeUpdate();
                 cn.close();
                 this.dispose();
@@ -718,9 +718,41 @@ public class Day_Note extends javax.swing.JFrame {
     }//GEN-LAST:event_jMI_EliminarActionPerformed
 
     private void jMI_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMI_GuardarActionPerformed
-            if(evt.getSource() == jMI_Guardar){
-                
+         
+        
+        if (evt.getSource() == jMI_Guardar) {
+            labelC = jLabel_color.getText();
+            try{
+                Connection cn1 = Conexion.Conectar();
+
+                PreparedStatement pst1 = cn1.prepareStatement(
+                        "DELETE FROM calendar WHERE Fecha = '" + date_update + "'");
+                pst1.executeUpdate();
+                cn1.close();
+            }catch(SQLException e){
+                System.out.println("Error en eliminar campo " + e);
             }
+
+            try {
+                Connection cn = Conexion.Conectar();
+
+                PreparedStatement pst = cn.prepareStatement("insert into calendar values (?,?,?)");
+
+                pst.setInt(1, 0);
+                pst.setString(2, date_update);
+                pst.setString(3, labelC);
+
+                pst.executeUpdate();
+                cn.close();
+
+                JOptionPane.showMessageDialog(null, "Registro exitoso.");
+                this.dispose();
+            } catch (SQLException e) {
+                System.err.println("Error en guardar cambios. " + e);
+            }
+            
+
+        }
     }//GEN-LAST:event_jMI_GuardarActionPerformed
 
     public static void main(String args[]) {
@@ -775,6 +807,7 @@ public class Day_Note extends javax.swing.JFrame {
     private javax.swing.JButton btn_volver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel_Wallpaper;
+    private javax.swing.JLabel jLabel_color;
     private javax.swing.JMenuItem jMI_Eliminar;
     private javax.swing.JMenuItem jMI_Guardar;
     private javax.swing.JMenuItem jMI_interfazTarea;
