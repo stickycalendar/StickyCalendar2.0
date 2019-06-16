@@ -77,7 +77,7 @@ public class Dates_Add extends javax.swing.JFrame {
                     Day_Note dn = new Day_Note();
                     dn.setVisible(true);
                     dn.setTitle("StickyCalendar 2.0 - " + date_update1);
-                    dn.date_update = date_update1;
+                    
                     
                 }
             } 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-06-2019 a las 03:44:11
+-- Tiempo de generación: 16-06-2019 a las 03:45:07
 -- Versión del servidor: 8.0.12
 -- Versión de PHP: 7.2.9
 
@@ -30,20 +30,22 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `calendar` (
   `ID` int(10) NOT NULL,
-  `Fecha` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+  `Fecha` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Colores` varchar(7) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Notas` longtext COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `calendar`
 --
 
-INSERT INTO `calendar` (`ID`, `Fecha`) VALUES
-(1, '15/06/2019'),
-(2, '3/06/2019'),
-(3, '30/06/2019'),
-(4, '20/09/2019'),
-(5, '17/09/2019'),
-(6, '27/11/2019');
+INSERT INTO `calendar` (`ID`, `Fecha`, `Colores`, `Notas`) VALUES
+(56, '3/06/2019', '#FFC800', ''),
+(59, '30/06/2019', '#FF00FF', ''),
+(65, '8/08/2019', '#00FF00', ''),
+(66, '2/06/2019', '#0000FF', 'Hola, Como estas?'),
+(67, '10/12/2019', '#FFAFAF', 'que tal está el clima?\nhace calor o frio?\nmandame un mensaje'),
+(69, '28/06/2019', '#00FF00', 'Colombia 2- Argentina 0');
 
 --
 -- Índices para tablas volcadas
@@ -63,7 +65,7 @@ ALTER TABLE `calendar`
 -- AUTO_INCREMENT de la tabla `calendar`
 --
 ALTER TABLE `calendar`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

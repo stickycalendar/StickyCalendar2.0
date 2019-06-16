@@ -139,11 +139,12 @@ public class Calendar extends javax.swing.JFrame {
                     try {
                         Connection cn2 = Conexion.Conectar();
 
-                        PreparedStatement pst2 = cn2.prepareStatement("insert into calendar values (?,?,?)");
+                        PreparedStatement pst2 = cn2.prepareStatement("insert into calendar values (?,?,?,?)");
 
                         pst2.setInt(1, 0);
                         pst2.setString(2, date_update2);
                         pst2.setString(3, "");
+                        pst2.setString(4, "");
 
                         pst2.executeUpdate();
 

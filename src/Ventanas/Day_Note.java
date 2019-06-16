@@ -12,24 +12,39 @@ public class Day_Note extends javax.swing.JFrame {
     int t = 14, s = 0, ID;
     Font f = null;
     String[] Array = {"Arial", "Calibri", "Times New Roman", "Segoe Script"};
-    String fon, labelC, fecha1, date_update = "";
+    String fon, labelC, fecha1, date_update = "", text;
     public static Color c = null;
-    //String[] date_update = {Dates_Add.date_update1, Calendar.date_update2};
-    
+
     public Day_Note() {
         initComponents();
-        
+        date_update = Dates_Add.date_update1;
         getContentPane().setBackground(Color.getColor(null, c));
         setSize(430, 400);
         setTitle("StickyCalendar 2.0");
         setLocationRelativeTo(null);
         setResizable(false);
-        setBackground(c);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         jTextArea1.setFont(f = new Font(fon = Array[2], s, t));
-   
-        jLabel_color.setVisible(false);
-        jMI_Guardar.setVisible(true);
+        
+        jLabel_color.setVisible(true);
+        
+         
+        try {
+            Connection cn = Conexion.Conectar();
+            PreparedStatement pst = cn.prepareStatement("select * from calendar where Fecha = '" + date_update + "'");
+
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                ID = rs.getInt("ID");
+                jLabel_color.setText(rs.getString("Colores"));
+                jTextArea1.setText(rs.getString("Notas"));
+                setBackground(c = hex2Rgb(jLabel_color.getText()));
+                  
+            } cn.close();
+        } catch (SQLException e) {
+            System.err.println("Error al poner color");
+        }
         
     }
 
@@ -40,6 +55,12 @@ public class Day_Note extends javax.swing.JFrame {
         }
         return "#" + hexColour.toUpperCase();
     }
+    public static Color hex2Rgb(String colorStr) {
+    return new Color(
+            Integer.valueOf( colorStr.substring( 1, 3 ), 16 ),
+            Integer.valueOf( colorStr.substring( 3, 5 ), 16 ),
+            Integer.valueOf( colorStr.substring( 5, 7 ), 16 ) );
+}
 
     //Cambiar Icono:
     @Override
@@ -111,6 +132,14 @@ public class Day_Note extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -122,7 +151,7 @@ public class Day_Note extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 70, 390, 260));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 70, 410, 270));
 
         btn_volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Volver.png"))); // NOI18N
         btn_volver.setBorder(null);
@@ -566,11 +595,12 @@ public class Day_Note extends javax.swing.JFrame {
     //tamaño de ventana
     private void jMenuItem_tamanio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_tamanio1ActionPerformed
         if (evt.getSource() == jMenuItem_tamanio1) {
-            this.setBounds(590, 230, 400, 300);
+            
             jLabel_Wallpaper.setBounds(0, 0, 399, 280);
             jScrollPane1.setBounds(10, 60, 360, 165);
             jTextArea1.setBounds(10, 60, 360, 165);
             jLabel1.setBounds(20, 35, 60, 20);
+            this.setBounds(590, 230, 400, 300);
 
         }
     }//GEN-LAST:event_jMenuItem_tamanio1ActionPerformed
@@ -596,7 +626,7 @@ public class Day_Note extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem_tamanio3ActionPerformed
 
     private void jMenuItem_tamanio1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem_tamanio1MouseClicked
-
+           
     }//GEN-LAST:event_jMenuItem_tamanio1MouseClicked
 
     private void jMenu_tipoLetraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu_tipoLetraActionPerformed
@@ -718,42 +748,65 @@ public class Day_Note extends javax.swing.JFrame {
     }//GEN-LAST:event_jMI_EliminarActionPerformed
 
     private void jMI_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMI_GuardarActionPerformed
-         
-        
+
         if (evt.getSource() == jMI_Guardar) {
             labelC = jLabel_color.getText();
-            try{
+            text = jTextArea1.getText();
+            try {
                 Connection cn1 = Conexion.Conectar();
 
                 PreparedStatement pst1 = cn1.prepareStatement(
                         "DELETE FROM calendar WHERE Fecha = '" + date_update + "'");
                 pst1.executeUpdate();
                 cn1.close();
-            }catch(SQLException e){
+            } catch (SQLException e) {
                 System.out.println("Error en eliminar campo " + e);
             }
 
             try {
                 Connection cn = Conexion.Conectar();
 
-                PreparedStatement pst = cn.prepareStatement("insert into calendar values (?,?,?)");
+                PreparedStatement pst = cn.prepareStatement("insert into calendar values (?,?,?,?)");
 
                 pst.setInt(1, 0);
                 pst.setString(2, date_update);
                 pst.setString(3, labelC);
+                pst.setString(4, text);
 
                 pst.executeUpdate();
                 cn.close();
 
                 JOptionPane.showMessageDialog(null, "Registro exitoso.");
-                this.dispose();
             } catch (SQLException e) {
                 System.err.println("Error en guardar cambios. " + e);
             }
-            
-
         }
     }//GEN-LAST:event_jMI_GuardarActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+
+    }//GEN-LAST:event_formWindowActivated
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        if(this.isActive()){
+            try {
+            Connection cn = Conexion.Conectar();
+            PreparedStatement pst = cn.prepareStatement("select * from calendar where Fecha = '" + date_update + "'");
+
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                ID = rs.getInt("ID");
+                jLabel_color.setText(rs.getString("Colores"));
+                this.setBackground(c = hex2Rgb(jLabel_color.getText()));
+                  
+            } cn.close();
+        } catch (SQLException e) {
+            System.err.println("Error al poner color");
+        }
+        }
+        
+    }//GEN-LAST:event_formWindowOpened
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
