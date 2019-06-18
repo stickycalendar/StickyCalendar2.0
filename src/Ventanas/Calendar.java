@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.WindowConstants;
 import Clases.Conexion;
+import java.awt.Color;
 import java.sql.*;
 import java.text.DateFormat;
 import java.util.*;
@@ -23,7 +24,7 @@ public class Calendar extends javax.swing.JFrame {
         setTitle("StickyCalendar 2.0");
         setLocationRelativeTo(null);
         setResizable(false);
-        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
         ImageIcon wallpaper = new ImageIcon("src/images/wallpaper.png");
 
@@ -109,9 +110,12 @@ public class Calendar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_validarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_validarActionPerformed
-
+        try{
         String fecha2 = df.format(Date1.getDate());
         txt_fecha.setText(fecha2);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Debes seleccionar una fecha");
+        }
     }//GEN-LAST:event_btn_validarActionPerformed
 
     private void jButton_CNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CNActionPerformed
@@ -139,23 +143,20 @@ public class Calendar extends javax.swing.JFrame {
                     try {
                         Connection cn2 = Conexion.Conectar();
 
-                        PreparedStatement pst2 = cn2.prepareStatement("insert into calendar values (?,?,?,?)");
+                        PreparedStatement pst2 = cn2.prepareStatement("insert into calendar values (?,?,?)");
 
                         pst2.setInt(1, 0);
                         pst2.setString(2, date_update2);
                         pst2.setString(3, "");
-                        pst2.setString(4, "");
 
                         pst2.executeUpdate();
-
+                        
+                        this.setVisible(false);
                         Day_Note dn = new Day_Note();
                         dn.setVisible(true);
+                        dn.Limpiartxt();
                         dn.setTitle("StickyCalendar 2.0 - " + date_update2);
-                        dn.date_update = date_update2;
-                        dn.setBackground(null);
                         
-                        this.dispose();
-
                         cn2.close();
                         Limpiar();
 

@@ -26,7 +26,7 @@ public class Dates_Add extends javax.swing.JFrame {
         setSize(300, 300);
         setLocationRelativeTo(null);
         setResizable(false);
-        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         setBackground(Color.LIGHT_GRAY);
         
         ImageIcon wallpaper = new ImageIcon("src/images/wallpaper.png");
@@ -77,7 +77,7 @@ public class Dates_Add extends javax.swing.JFrame {
                     Day_Note dn = new Day_Note();
                     dn.setVisible(true);
                     dn.setTitle("StickyCalendar 2.0 - " + date_update1);
-                    
+                    dn.SelectDate();
                     
                 }
             } 
@@ -90,7 +90,6 @@ public class Dates_Add extends javax.swing.JFrame {
         return retValue;
     }
     
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

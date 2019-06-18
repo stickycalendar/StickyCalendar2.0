@@ -21,6 +21,7 @@ public class Homework extends javax.swing.JFrame {
         co = Day_Note.c;
 
         getContentPane().setBackground(Color.getColor(null, co));
+        setBackground(Color.LIGHT_GRAY);
         setSize(400, 370);
         setTitle("StickyCalendar 2.0");
         setLocationRelativeTo(null);

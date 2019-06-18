@@ -78,6 +78,7 @@ public class Principal extends javax.swing.JFrame {
         if (evt.getSource() == btn_setDate) {
             Dates_Add da = new Dates_Add();
             da.setVisible(true);
+           
 
         }
     }//GEN-LAST:event_btn_setDateActionPerformed
@@ -86,6 +87,7 @@ public class Principal extends javax.swing.JFrame {
         if (evt.getSource() == btn_getDate) {
             Calendar c = new Calendar();
             c.setVisible(true);
+            
 
         }
     }//GEN-LAST:event_btn_getDateActionPerformed
