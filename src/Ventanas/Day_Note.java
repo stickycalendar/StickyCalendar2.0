@@ -52,7 +52,7 @@ public class Day_Note extends javax.swing.JFrame {
         jTextArea1.setBackground(Color.WHITE);
         jTextArea1.setForeground(Color.BLACK);
         jTextArea1.setFont(f = new Font(fon = Array[0], s, t));
-        date_update = Calendar.date_update2;
+        date_update = Calendar.date_update2; 
     }
     
     public void SelectDate(){
@@ -91,6 +91,7 @@ public class Day_Note extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu_opciones = new javax.swing.JMenu();
         jMI_Guardar = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jMI_Eliminar = new javax.swing.JMenuItem();
         jMenu_ventana = new javax.swing.JMenu();
         jMenu_colorFondo = new javax.swing.JMenu();
@@ -116,9 +117,7 @@ public class Day_Note extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenu_tamanioVentana = new javax.swing.JMenu();
         jMenuItem_tamanio1 = new javax.swing.JMenuItem();
-        jSeparator13 = new javax.swing.JPopupMenu.Separator();
         jMenuItem_tamanio2 = new javax.swing.JMenuItem();
-        jSeparator14 = new javax.swing.JPopupMenu.Separator();
         jMenuItem_tamanio3 = new javax.swing.JMenuItem();
         jMenu_escritura = new javax.swing.JMenu();
         jMenu_tipoLetra = new javax.swing.JMenu();
@@ -136,7 +135,6 @@ public class Day_Note extends javax.swing.JFrame {
         TML20 = new javax.swing.JMenuItem();
         jMenu_tareas = new javax.swing.JMenu();
         jMI_interfazTarea = new javax.swing.JMenuItem();
-        jMenu_fecha1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
@@ -170,6 +168,7 @@ public class Day_Note extends javax.swing.JFrame {
             }
         });
         jMenu_opciones.add(jMI_Guardar);
+        jMenu_opciones.add(jSeparator3);
 
         jMI_Eliminar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jMI_Eliminar.setText("Eliminar Tarea");
@@ -330,7 +329,6 @@ public class Day_Note extends javax.swing.JFrame {
             }
         });
         jMenu_tamanioVentana.add(jMenuItem_tamanio1);
-        jMenu_tamanioVentana.add(jSeparator13);
 
         jMenuItem_tamanio2.setText("450x350");
         jMenuItem_tamanio2.addActionListener(new java.awt.event.ActionListener() {
@@ -339,7 +337,6 @@ public class Day_Note extends javax.swing.JFrame {
             }
         });
         jMenu_tamanioVentana.add(jMenuItem_tamanio2);
-        jMenu_tamanioVentana.add(jSeparator14);
 
         jMenuItem_tamanio3.setText("500x450");
         jMenuItem_tamanio3.addActionListener(new java.awt.event.ActionListener() {
@@ -477,10 +474,6 @@ public class Day_Note extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu_tareas);
 
-        jMenu_fecha1.setForeground(new java.awt.Color(255, 0, 51));
-        jMenu_fecha1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jMenuBar1.add(jMenu_fecha1);
-
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -489,6 +482,9 @@ public class Day_Note extends javax.swing.JFrame {
     private void jMI_interfazTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMI_interfazTareaActionPerformed
         Homework tarea = new Homework();
         tarea.setVisible(true);
+        tarea.Tareastxt();
+        tarea.setTitle("StickyCalendar 2.0 - " + date_update);
+        tarea.Labels();
     }//GEN-LAST:event_jMI_interfazTareaActionPerformed
 
     private void jMenu_colorFondoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu_colorFondoActionPerformed
@@ -592,6 +588,9 @@ public class Day_Note extends javax.swing.JFrame {
             jScrollPane1.setBounds(10, 60, 360, 165);
             jTextArea1.setBounds(10, 60, 360, 165);
             this.setBounds(590, 230, 400, 300);
+            jMenuItem_tamanio1.setVisible(false);
+            jMenuItem_tamanio2.setVisible(true);
+            jMenuItem_tamanio3.setVisible(true);
 
         }
     }//GEN-LAST:event_jMenuItem_tamanio1ActionPerformed
@@ -601,7 +600,10 @@ public class Day_Note extends javax.swing.JFrame {
             this.setBounds(565, 230, 450, 350);
             jScrollPane1.setBounds(8, 80, 420, 200);
             jTextArea1.setBounds(8, 80, 420, 200);
-
+            jMenuItem_tamanio1.setVisible(true);
+            jMenuItem_tamanio2.setVisible(false);
+            jMenuItem_tamanio3.setVisible(true);
+                
         }
     }//GEN-LAST:event_jMenuItem_tamanio2ActionPerformed
 
@@ -610,6 +612,9 @@ public class Day_Note extends javax.swing.JFrame {
             this.setBounds(535, 230, 500, 450);
             jScrollPane1.setBounds(8, 80, 455, 300);
             jTextArea1.setBounds(8, 80, 455, 300);
+            jMenuItem_tamanio1.setVisible(true);
+            jMenuItem_tamanio2.setVisible(true);
+            jMenuItem_tamanio3.setVisible(false);
 
         }
     }//GEN-LAST:event_jMenuItem_tamanio3ActionPerformed
@@ -733,25 +738,13 @@ public class Day_Note extends javax.swing.JFrame {
         if (evt.getSource() == jMI_Guardar) {
 
             text = jTextArea1.getText();
-            try {
-                Connection cn1 = Conexion.Conectar();
-
-                PreparedStatement pst1 = cn1.prepareStatement(
-                        "DELETE FROM calendar WHERE Fecha = '" + date_update + "'");
-                pst1.executeUpdate();
-                cn1.close();
-            } catch (SQLException e) {
-                System.out.println("Error en eliminar campo " + e);
-            }
-
+            
             try {
                 Connection cn = Conexion.Conectar();
 
-                PreparedStatement pst = cn.prepareStatement("insert into calendar values (?,?,?)");
+                PreparedStatement pst = cn.prepareStatement("update calendar set Notas = ? where Fecha = '" + date_update + "'");
 
-                pst.setInt(1, 0);
-                pst.setString(2, date_update);
-                pst.setString(3, text);
+                pst.setString(1, text);
 
                 pst.executeUpdate();
                 cn.close();
@@ -834,7 +827,6 @@ public class Day_Note extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem_tamanio3;
     private javax.swing.JMenu jMenu_colorFondo;
     private javax.swing.JMenu jMenu_escritura;
-    private javax.swing.JMenu jMenu_fecha1;
     private javax.swing.JMenu jMenu_opciones;
     private javax.swing.JMenu jMenu_tamanioLetra;
     private javax.swing.JMenu jMenu_tamanioVentana;
@@ -846,9 +838,8 @@ public class Day_Note extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator10;
     private javax.swing.JPopupMenu.Separator jSeparator11;
     private javax.swing.JPopupMenu.Separator jSeparator12;
-    private javax.swing.JPopupMenu.Separator jSeparator13;
-    private javax.swing.JPopupMenu.Separator jSeparator14;
     private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JPopupMenu.Separator jSeparator6;
