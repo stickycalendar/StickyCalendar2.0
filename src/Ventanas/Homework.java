@@ -30,6 +30,7 @@ public class Homework extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        WallpaperColor();
         jMenu_noti.setVisible(true);
         jMenuItem_AcNotificacion.setVisible(true);
         jMenuItem_DeNotificaciones.setVisible(false);
@@ -37,6 +38,15 @@ public class Homework extends javax.swing.JFrame {
         jMenu_notificaciones.setVisible(true);
 
     }
+    public void WallpaperColor(){
+        if((co == Color.BLACK) || (co == Color.BLUE)){
+            jLabel1.setForeground(Color.WHITE);
+            jLabel2.setForeground(Color.WHITE);
+            jLabel3.setForeground(Color.WHITE);
+            jLabel4.setForeground(Color.WHITE);
+            jLabel5.setForeground(Color.WHITE);
+        }
+    } 
 
     public void Tareastxt() {
         date_update3 = Day_Note.date_update;
