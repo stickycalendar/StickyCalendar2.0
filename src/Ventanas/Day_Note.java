@@ -27,8 +27,7 @@ public class Day_Note extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(true);
         setBackground(Color.LIGHT_GRAY);
-
-        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
     }
 
@@ -71,6 +70,22 @@ public class Day_Note extends javax.swing.JFrame {
             cn.close();
         } catch (SQLException e) {
             System.out.println("Error al poner Nota" + e);
+        }
+    }
+    
+    public void cerrar(){
+        Object [] opciones ={"Cerrar Todo", "Abrir Ventana Principal", "Cerrar Ventana Actual"};
+        int eleccion = JOptionPane.showOptionDialog(rootPane,"¿En realidad desea cerrar la aplicación o abrir la ventana principal? ","Mensaje de Confirmacion",
+        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,null,opciones,"Cerrar Todo");
+        if (eleccion == JOptionPane.YES_OPTION){
+        
+            System.exit(0);
+        
+        }else if(eleccion == JOptionPane.NO_OPTION){
+            Principal p = new Principal();
+            p.setVisible(true);
+        }else{
+            setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         }
     }
 
@@ -141,6 +156,12 @@ public class Day_Note extends javax.swing.JFrame {
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
+            }
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
             }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -764,6 +785,14 @@ public class Day_Note extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_formWindowOpened
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+       
+    }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        cerrar();
+    }//GEN-LAST:event_formWindowClosing
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

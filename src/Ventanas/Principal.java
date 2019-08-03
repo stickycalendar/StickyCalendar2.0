@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
 public class Principal extends javax.swing.JFrame {
@@ -13,8 +14,8 @@ public class Principal extends javax.swing.JFrame {
         setTitle("StickyCalendar 2.0");
         setLocationRelativeTo(null);
         setResizable(false);
-        setSize(400, 180);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setSize(400, 210);
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
         ImageIcon wallpaper = new ImageIcon("src/images/wallpaper.png");
 
@@ -31,7 +32,21 @@ public class Principal extends javax.swing.JFrame {
 
         return retValue;
     }
-
+    
+    public void Esconder(){
+    
+        Object [] opciones ={"Cerrar Todo", "Cerrar Ventana Actual"};
+        int eleccion = JOptionPane.showOptionDialog(rootPane,"¿En realidad desea cerrar la aplicación o sólo esta ventana? ","Mensaje de Confirmacion",
+        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,null,opciones,"Cerrar Todo");
+        if (eleccion == JOptionPane.YES_OPTION){
+        
+            System.exit(0);
+        }else{
+            setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        }
+    }
+       
+        
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -39,10 +54,16 @@ public class Principal extends javax.swing.JFrame {
         btn_setDate = new javax.swing.JButton();
         btn_getDate = new javax.swing.JButton();
         jLabel_welcome = new javax.swing.JLabel();
+        Hide = new javax.swing.JButton();
         jLabel_wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_setDate.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -69,7 +90,15 @@ public class Principal extends javax.swing.JFrame {
         jLabel_welcome.setForeground(new java.awt.Color(51, 153, 255));
         jLabel_welcome.setText("WELCOME TO STICKY CALENDAR 2.0");
         getContentPane().add(jLabel_welcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 30, -1, -1));
-        getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 170));
+
+        Hide.setText("HIDE");
+        Hide.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HideActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Hide, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, -1, -1));
+        getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 200));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -89,6 +118,14 @@ public class Principal extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_btn_getDateActionPerformed
+
+    private void HideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HideActionPerformed
+        
+    }//GEN-LAST:event_HideActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        Esconder();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -126,6 +163,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Hide;
     private javax.swing.JButton btn_getDate;
     private javax.swing.JButton btn_setDate;
     private javax.swing.JLabel jLabel_wallpaper;
