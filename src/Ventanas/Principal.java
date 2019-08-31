@@ -14,7 +14,7 @@ public class Principal extends javax.swing.JFrame {
         setTitle("StickyCalendar 2.0");
         setLocationRelativeTo(null);
         setResizable(false);
-        setSize(400, 210);
+        setSize(400, 160);
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
         ImageIcon wallpaper = new ImageIcon("src/images/wallpaper.png");
@@ -54,7 +54,6 @@ public class Principal extends javax.swing.JFrame {
         btn_setDate = new javax.swing.JButton();
         btn_getDate = new javax.swing.JButton();
         jLabel_welcome = new javax.swing.JLabel();
-        Hide = new javax.swing.JButton();
         jLabel_wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -90,15 +89,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel_welcome.setForeground(new java.awt.Color(51, 153, 255));
         jLabel_welcome.setText("WELCOME TO STICKY CALENDAR 2.0");
         getContentPane().add(jLabel_welcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 30, -1, -1));
-
-        Hide.setText("HIDE");
-        Hide.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HideActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Hide, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, -1, -1));
-        getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 200));
+        getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 150));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -118,10 +109,6 @@ public class Principal extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_btn_getDateActionPerformed
-
-    private void HideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HideActionPerformed
-        
-    }//GEN-LAST:event_HideActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         Esconder();
@@ -163,7 +150,6 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Hide;
     private javax.swing.JButton btn_getDate;
     private javax.swing.JButton btn_setDate;
     private javax.swing.JLabel jLabel_wallpaper;
